@@ -1,0 +1,329 @@
+/* --- Fuentes de Google --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap');
+
+/* --- Reset Básico y Estilos Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px; 
+    background-color: #212121; 
+    color: #f4f4f4; 
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 16px; 
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 24px; }
+p  { font-size: 1rem; margin-bottom: 16px; }
+
+a {
+    color: #009688; 
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Contenedor principal (para centrar contenido) */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* --- Header y Navegación --- */
+.navbar {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    padding: 16px 0; 
+    position: fixed; 
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+/* --- Menú Móvil (Hamburguesa) --- */
+#menu-toggle {
+    display: none;
+}
+
+.menu-hamburger {
+    display: block; 
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-hamburger .linea {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #FFFFFF;
+    margin: 6px 0;
+    transition: all 0.3s ease; 
+}
+
+.nav-links {
+    position: fixed;
+    top: 70px; 
+    left: 0;
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out; 
+}
+
+.nav-links li {
+    margin: 20px 0;
+}
+
+.nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+#menu-toggle:checked ~ .nav-links {
+    transform: translateX(0);
+}
+
+/* Animación de la hamburguesa a "X" */
+#menu-toggle:checked ~ .menu-hamburger .linea:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+#menu-toggle:checked ~ .menu-hamburger .linea:nth-child(2) {
+    opacity: 0;
+}
+#menu-toggle:checked ~ .menu-hamburger .linea:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+
+/* --- Sección Hero (Principal) --- */
+.hero {
+    /* El degradado ayuda a que el texto se lea sobre la imagen */
+    background: linear-gradient(rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.7)), url('../images/wp2832101-min.jpg');
+    background-color: #333; 
+    background-size: cover;
+    background-position: center;
+    
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px; /* Para que no lo tape el header fijo */
+}
+
+.hero h1 {
+    margin-bottom: 24px;
+}
+
+/* Estilo del botón principal */
+.btn {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid #009688; 
+    padding: 14px 32px; 
+    border-radius: 5px;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #009688;
+    color: #212121;
+    transform: translateY(-3px); 
+}
+
+/* --- Sección Artículos (Tarjetas) --- */
+.articles-section {
+    background-color: #1a1a1a; 
+    text-align: center;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+    gap: 24px; 
+    margin-top: 32px;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden; 
+    text-align: left;
+    padding: 20px;
+}
+
+/* Esto era para el placeholder gris, lo dejo por si acaso */
+.card-image-placeholder {
+    height: 180px;
+    background-color: #555;
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+
+.card h3 {
+    color: #009688; 
+}
+
+/* AQUÍ ESTÁ EL CÓDIGO ARREGLADO
+  Para que todas las imágenes de las tarjetas midan igual
+*/
+.card img {
+    width: 100%;            
+    height: 200px;          /* Alto fijo para todas */
+    object-fit: cover;      /* Rellena el espacio sin deformarse */
+    object-position: center;  
+    margin-bottom: 16px;
+    border-radius: 5px;
+}
+
+
+/* --- Otras Secciones (CTA, Sobre Mí, Contacto) --- */
+.cta-section {
+    text-align: center;
+    background-color: #009688;
+}
+.cta-section h2, .cta-section p {
+    color: #212121;
+}
+.cta-section .btn {
+    background-color: #212121;
+    border-color: #212121;
+    color: #FFFFFF;
+}
+.cta-section .btn:hover {
+    background-color: transparent;
+    color: #212121;
+}
+
+.about-section {
+    background-color: #1a1a1a;
+}
+
+.contact-section {
+    text-align: center;
+}
+
+
+/* --- Footer (Pie de página) --- */
+footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Apilado en móvil */
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* --- Responsive (Desktop) --- */
+/* Aquí empieza el código para pantallas grandes (más de 768px) */
+
+@media (min-width: 768px) {
+    
+    /* Ocultamos la hamburguesa en desktop */
+    .menu-hamburger {
+        display: none;
+    }
+    
+    /* Ponemos los links del menú en horizontal */
+    .nav-links {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        background-color: transparent;
+        padding-top: 0;
+        gap: 24px;
+    }
+    
+    .nav-links a {
+        font-size: 16px;
+        transition: color 0.2s ease;
+    }
+    
+    .nav-links a:hover {
+        color: #009688; 
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+    
+    .hero h1 {
+        font-size: 52px; 
+    }
+
+    /* 3 columnas para los artículos */
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+
+    /* Ponemos el footer en horizontal */
+    .footer-content {
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+}
